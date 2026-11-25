@@ -21,6 +21,9 @@ from engine.analyze_evidence import CATEGORY_PATTERNS, PAIN_POINT_PATTERNS
 from engine.collectors.google_play import audit_privacy, redact_pii
 from engine.tagger import GroqLLMClient, tag_single_review
 
+MAX_LIVE_INPUT_CHARS = 2000
+UC_REPORTED_PLATFORM_AVG_RATING = 4.79
+
 DEFAULT_DATA_PATHS = {
     "normalized_v2": _REPO_ROOT / "data/processed/normalized_evidence_v2.jsonl",
     "norm_report_v2": _REPO_ROOT / "data/processed/normalization_v2_report.json",
@@ -130,11 +133,13 @@ def load_engine_bundle(paths: Optional[Dict[str, Path]] = None) -> Dict[str, Any
             if rid:
                 tagged_by_id[rid] = rec
 
-    baseline_tagged_ids = {
-        str(r.get("review_id", "")).strip()
-        for r in load_jsonl(p["tagged_v1"]) + load_jsonl(p["queue_v1"])
+    baseline_records = load_jsonl(p["tagged_v1"]) + load_jsonl(p["queue_v1"])
+    baseline_by_id = {
+        str(r.get("review_id", "")).strip(): r
+        for r in baseline_records
         if r.get("review_id")
     }
+    baseline_tagged_ids = set(baseline_by_id.keys())
 
     golden_by_id = {
         str(r.get("review_id", "")).strip(): r for r in golden_records if r.get("review_id")
@@ -145,6 +150,7 @@ def load_engine_bundle(paths: Optional[Dict[str, Path]] = None) -> Dict[str, Any
         "norm_report": norm_report,
         "analysis_summary": analysis_summary,
         "tagged_by_id": tagged_by_id,
+        "baseline_by_id": baseline_by_id,
         "baseline_tagged_ids": baseline_tagged_ids,
         "golden_by_id": golden_by_id,
         "golden_records": golden_records,
@@ -163,29 +169,58 @@ def compute_overview_metrics(bundle: Dict[str, Any]) -> Dict[str, Any]:
     core_eligible = len(core_records)
 
     consumer_sources = {"Play Store", "App Store"}
+    consumer_all = [r for r in records if r.get("source") in consumer_sources]
     consumer_core = [r for r in core_records if r.get("source") in consumer_sources]
     ir_core = [r for r in core_records if r.get("source") not in consumer_sources]
 
     tagged_in_dataset = sum(1 for r in core_records if r.get("review_id") in tagged_by_id)
     untagged_in_dataset = core_eligible - tagged_in_dataset
+    untagged_consumer_core = sum(1 for r in consumer_core if r.get("review_id") not in tagged_by_id)
 
     source_counts = Counter(r.get("source", "Unknown") for r in records)
     core_rating_counts = Counter(
         str(int(r["rating"])) for r in consumer_core if r.get("rating") is not None
     )
 
+    core_ratings = [float(r["rating"]) for r in consumer_core if r.get("rating") is not None]
+    all_ratings = [float(r["rating"]) for r in consumer_all if r.get("rating") is not None]
+    sample_avg_rating_core = round(sum(core_ratings) / len(core_ratings), 2) if core_ratings else None
+    sample_avg_rating_all = round(sum(all_ratings) / len(all_ratings), 2) if all_ratings else None
+
+    # Baseline 184 tagged sample headline stats (computed strictly from baseline 184, never overwritten by v3_2)
+    baseline_by_id = bundle.get("baseline_by_id") or {}
+    nww_true_baseline = 0
+    recall_gap_true_baseline = 0
+    for rid in baseline_ids:
+        t_rec = baseline_by_id.get(rid) or tagged_by_id.get(rid) or {}
+        tags = t_rec.get("tags") or {}
+        if tags.get("nothing_went_wrong") is True:
+            nww_true_baseline += 1
+        if tags.get("recall_gap") is True:
+            recall_gap_true_baseline += 1
+
+    app_store_combined_count = source_counts.get("Play Store", 0) + source_counts.get("App Store", 0)
+
     return {
         "total_evidence": total_evidence,
         "core_eligible": core_eligible,
         "instahelp_count": instahelp_count,
+        "consumer_all_count": len(consumer_all),
         "consumer_core_count": len(consumer_core),
         "ir_core_count": len(ir_core),
         "baseline_tagged_count": len(baseline_ids),
         "tagged_in_dataset": tagged_in_dataset,
         "untagged_in_dataset": untagged_in_dataset,
+        "untagged_consumer_core": untagged_consumer_core,
         "golden_count": len(bundle["golden_records"]),
         "source_counts": dict(source_counts),
+        "app_store_combined_count": app_store_combined_count,
         "core_rating_counts": dict(sorted(core_rating_counts.items())),
+        "sample_avg_rating_core": sample_avg_rating_core,
+        "sample_avg_rating_all": sample_avg_rating_all,
+        "uc_platform_avg_rating": UC_REPORTED_PLATFORM_AVG_RATING,
+        "baseline_nothing_went_wrong_true": nww_true_baseline,
+        "baseline_recall_gap_true": recall_gap_true_baseline,
     }
 
 
@@ -326,6 +361,17 @@ def tag_live_review_groq_v3_2(
     if not cleaned_input:
         return {"status": "error", "error_type": "empty_input", "message": "Please enter review text to tag."}
 
+    if len(cleaned_input) > MAX_LIVE_INPUT_CHARS:
+        return {
+            "status": "error",
+            "error_type": "input_too_long",
+            "message": (
+                f"Input exceeds the {MAX_LIVE_INPUT_CHARS}-character limit "
+                f"({len(cleaned_input)} chars). Please shorten the review text."
+            ),
+        }
+
+    # Always redact PII before privacy audit or sending text to the model
     redacted = redact_pii(cleaned_input)
     privacy_flags = audit_privacy(redacted)
     if privacy_flags:
@@ -383,8 +429,16 @@ def tag_live_review_groq_v3_2(
         )
         return {"status": "ok", "result": result, "redacted_text": redacted}
     except Exception as exc:
+        err_name = type(exc).__name__
+        err_lower = str(exc).lower()
+        if "429" in err_lower or "rate" in err_lower or "quota" in err_lower or "limit" in err_lower:
+            safe_msg = "Groq API rate limit or quota reached. Please wait ~60 seconds and try again."
+        elif "401" in err_lower or "403" in err_lower or "auth" in err_lower or "api_key" in err_lower:
+            safe_msg = "Groq API authentication failed. Please check your GROQ_API_KEY configuration."
+        else:
+            safe_msg = f"Groq v3.2 tagging could not complete ({err_name}). Please try again."
         return {
             "status": "error",
-            "error_type": type(exc).__name__,
-            "message": f"Groq v3.2 tagging failed: {exc}",
+            "error_type": err_name,
+            "message": safe_msg,
         }

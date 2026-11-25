@@ -36,6 +36,9 @@ class TestEngineAppDataAndMetrics(unittest.TestCase):
         self.assertEqual(self.metrics["instahelp_count"], 144)
         self.assertEqual(self.metrics["baseline_tagged_count"], 184)
         self.assertEqual(self.metrics["golden_count"], 30)
+        self.assertEqual(self.metrics["baseline_nothing_went_wrong_true"], 0)
+        self.assertEqual(self.metrics["baseline_recall_gap_true"], 0)
+        self.assertAlmostEqual(self.metrics["sample_avg_rating_core"], 3.59, places=2)
         self.assertEqual(
             self.metrics["core_eligible"] + self.metrics["instahelp_count"],
             self.metrics["total_evidence"],
@@ -91,6 +94,14 @@ class TestEngineAppDataAndMetrics(unittest.TestCase):
             )
             self.assertEqual(res["status"], "error")
             self.assertEqual(res["error_type"], "missing_credentials")
+
+    def test_live_tagging_rejects_oversized_input(self):
+        res = tag_live_review_groq_v3_2(
+            text="a" * 2001,
+            secrets_dict={"GROQ_API_KEY": "dummy_key"},
+        )
+        self.assertEqual(res["status"], "error")
+        self.assertEqual(res["error_type"], "input_too_long")
 
     def test_live_tagging_blocks_address_pii(self):
         res = tag_live_review_groq_v3_2(

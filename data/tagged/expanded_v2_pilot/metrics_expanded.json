@@ -1,0 +1,162 @@
+[
+  {
+    "review_id": "4aa218ce-da96-4c39-8819-cbfb7300d742",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.705,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "cb3e62da-a138-49a2-9612-48c17e307d88",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.406,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "80fef5a6-de97-4f3f-a026-5bc319da4c91",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.578,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "991c9f0f-a4f7-4e51-9739-3c4f5ce92331",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 1.87,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "dd843f61-f437-45f0-a303-4a38df69b926",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.511,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "82287d29-ea83-4852-a282-873831244606",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 3.409,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "65ba8b32-f300-4f1f-bd95-630414b2be5d",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 4.073,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "8efdb86c-83dd-4755-8784-dfcd1cccf66b",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.221,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "cb416661-dfa9-4551-b58c-6dc2e72395ad",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.415,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "06c8bf76-afc9-4555-bc4c-fdef2d22e030",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.948,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "7e4404f5-0fdf-4cbe-af71-8b61f71dd085",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.545,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "b8cda6f9-5730-4d0e-b4a4-ab028c2eb0d2",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 3.394,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "98c3cc7d-6635-4246-a723-e537b0507f21",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.858,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "7d0e5d07-d250-4988-ba5f-e05ce9e17906",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.808,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "12c970e6-5035-4775-84d8-5be263960156",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 3.277,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "359f7b85-df5f-470c-ae01-536845aae4c2",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.638,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "2311d493-b0b2-45f4-80e4-be309bb34652",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.692,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "f8079fa0-7016-481a-8d9b-d5a40ab2b0eb",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.34,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "ff15b5f3-5aa2-4be4-8948-186053e79820",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.577,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "52f34eb7-a801-47bf-9e1d-bfb725fe7dae",
+    "provider": "groq",
+    "status": "ok",
+    "wall_latency_s": 2.915,
+    "grounded_quote": true,
+    "requires_human_review": true
+  }
+]

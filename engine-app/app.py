@@ -5,7 +5,9 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import sys
+import time
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -14,6 +16,7 @@ if str(_APP_DIR) not in sys.path:
     sys.path.insert(0, str(_APP_DIR))
 
 from data_loader import (
+    MAX_LIVE_INPUT_CHARS,
     OPPORTUNITY_THEMES,
     compute_overview_metrics,
     filter_opportunity_evidence,
@@ -92,37 +95,122 @@ with st.sidebar:
 
 def render_overview() -> None:
     st.header("Overview")
-    st.write(
-        "Evidence base exploring why Urban Company customers do or do not book another "
-        "core home service within 90 days—separating operational failures from silent non-return."
+
+    st.info(
+        "**Research Finding / Evidence Limitation (not a proven causal conclusion):** "
+        "Public customer feedback reveals service failures more clearly than the reasons "
+        "satisfied customers do not return."
     )
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Total Evidence Items", f"{metrics['total_evidence']:,}")
-    c2.metric("Core Eligible (Excl. InstaHelp)", f"{metrics['core_eligible']:,}", f"-{metrics['instahelp_count']} InstaHelp")
-    c3.metric("LLM-Tagged (Baseline)", f"{metrics['baseline_tagged_count']}", f"{metrics['untagged_in_dataset']:,} core untagged")
-    c4.metric("Human Golden Set", f"{metrics['golden_count']}")
+    nww_true = metrics["baseline_nothing_went_wrong_true"]
+    rg_true = metrics["baseline_recall_gap_true"]
+    base_n = metrics["baseline_tagged_count"]
+    h1, h2 = st.columns(2)
+    h1.metric(
+        "nothing_went_wrong = true (Baseline Sample)",
+        f"{nww_true} / {base_n}",
+        f"Out of {base_n} baseline LLM-tagged reviews",
+    )
+    h2.metric(
+        "recall_gap = true (Baseline Sample)",
+        f"{rg_true} / {base_n}",
+        f"Out of {base_n} baseline LLM-tagged reviews",
+    )
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Total Evidence", f"{metrics['total_evidence']:,}")
+    c2.metric("Core Eligible", f"{metrics['core_eligible']:,}", f"{metrics['consumer_core_count']:,} consumer + {metrics['ir_core_count']} IR")
+    c3.metric("Core Consumer", f"{metrics['consumer_core_count']:,}", f"{metrics['untagged_consumer_core']:,} untagged")
+    c4.metric("InstaHelp Excluded", f"{metrics['instahelp_count']}")
+    c5.metric("Baseline LLM-Tagged", f"{base_n}", f"{metrics['golden_count']} golden set")
+
+    with st.expander("Metric Definitions & Scope"):
+        st.markdown(
+            f"- **Total evidence ({metrics['total_evidence']:,}):** All deduplicated records across Play Store, App Store, and Urban Company Investor Relations disclosures.\n"
+            f"- **Core eligible ({metrics['core_eligible']:,}):** Total evidence minus `{metrics['instahelp_count']}` InstaHelp (quick-housekeeping) records; includes `{metrics['consumer_core_count']:,}` consumer reviews and `{metrics['ir_core_count']}` IR excerpts.\n"
+            f"- **Core consumer reviews ({metrics['consumer_core_count']:,}):** Play Store (`1,158` core) + App Store (`90` core) excluding InstaHelp.\n"
+            f"- **InstaHelp excluded ({metrics['instahelp_count']}):** Retained in raw files for provenance but excluded from core repeat-booking metrics per brief.\n"
+            f"- **Baseline LLM-tagged ({base_n}):** Core consumer reviews tagged with the 16-field schema; `{metrics['untagged_consumer_core']:,}` core consumer reviews remain untagged."
+        )
 
     st.subheader("Source & Rating Distributions")
     col_left, col_right = st.columns(2)
 
     with col_left:
-        st.markdown("**Evidence by Source (All 1,522 items)**")
-        src_df = pd.DataFrame(
-            [{"Source": k, "Items": v} for k, v in metrics["source_counts"].items()]
-        ).sort_values("Items", ascending=False)
-        st.bar_chart(src_df.set_index("Source"), height=260)
-        st.dataframe(src_df, width="stretch", hide_index=True)
+        st.markdown("**Evidence by Source (Sorted Descending)**")
+        total_n = max(metrics["total_evidence"], 1)
+        src_rows = [
+            {
+                "Source": k,
+                "Items": v,
+                "Share (%)": round(100.0 * v / total_n, 1),
+                "Label": f"{v:,} ({100.0 * v / total_n:.1f}%)",
+            }
+            for k, v in metrics["source_counts"].items()
+        ]
+        src_df = pd.DataFrame(src_rows).sort_values("Items", ascending=False)
+
+        src_bars = (
+            alt.Chart(src_df)
+            .mark_bar(color="#0F172A")
+            .encode(
+                y=alt.Y("Source:N", sort="-x", title=None),
+                x=alt.X("Items:Q", title="Evidence Items"),
+                tooltip=["Source", "Items", "Share (%)"],
+            )
+            .properties(height=240)
+        )
+        src_text = (
+            alt.Chart(src_df)
+            .mark_text(align="left", dx=4, color="#0F172A", fontSize=11)
+            .encode(
+                y=alt.Y("Source:N", sort="-x"),
+                x=alt.X("Items:Q"),
+                text="Label:N",
+            )
+        )
+        st.altair_chart(src_bars + src_text, width="stretch")
+        app_n = metrics["app_store_combined_count"]
+        st.caption(
+            f"**Source-selection bias:** {app_n:,} / {metrics['total_evidence']:,} "
+            f"({100.0 * app_n / total_n:.1f}%) items are app-store reviews (Play Store + App Store). "
+            "App stores over-represent extreme complaints and terse praise while missing silent non-returners."
+        )
 
     with col_right:
-        st.markdown("**Star Rating Distribution (Core Consumer Reviews, n=1,248)**")
+        st.markdown("**Star Rating Distribution (Core Consumer Sample, n=1,248)**")
+        sample_avg = metrics["sample_avg_rating_core"]
+        uc_avg = metrics["uc_platform_avg_rating"]
+        m_avg1, m_avg2 = st.columns(2)
+        m_avg1.metric("Collected Core Sample Avg", f"{sample_avg:.2f} / 5.0", f"n = {metrics['consumer_core_count']:,} reviews")
+        m_avg2.metric("UC Reported Platform Avg", f"{uc_avg:.2f} / 5.0", "Q3 FY26 Shareholder Letter")
+
         rat_df = pd.DataFrame(
-            [{"Rating": f"{k} ★", "Reviews": v} for k, v in metrics["core_rating_counts"].items()]
+            [{"RatingNum": int(k), "Rating": f"{k} ★", "Reviews": v} for k, v in metrics["core_rating_counts"].items()]
         )
-        st.bar_chart(rat_df.set_index("Rating"), height=260)
+        rat_bars = (
+            alt.Chart(rat_df)
+            .mark_bar(color="#334155")
+            .encode(
+                x=alt.X("Rating:N", sort=["1 ★", "2 ★", "3 ★", "4 ★", "5 ★"], title="Star Rating"),
+                y=alt.Y("Reviews:Q", title="Core Consumer Reviews"),
+                tooltip=["Rating", "Reviews"],
+            )
+            .properties(height=210)
+        )
+        rat_labels = (
+            alt.Chart(rat_df)
+            .mark_text(dy=-6, color="#0F172A", fontSize=11)
+            .encode(
+                x=alt.X("Rating:N", sort=["1 ★", "2 ★", "3 ★", "4 ★", "5 ★"]),
+                y=alt.Y("Reviews:Q"),
+                text="Reviews:Q",
+            )
+        )
+        st.altair_chart(rat_bars + rat_labels, width="stretch")
         st.caption(
-            "Note: U-shaped distribution (heavy 1★ and 5★) reflects app-store selection bias, "
-            "compared to UC's reported 4.79/5.0 platform average (Q3 FY26 Shareholder Letter)."
+            f"Collected review sample average (**{sample_avg:.2f}/5.0**) is **{uc_avg - sample_avg:.2f} stars lower** "
+            f"than UC's platform-wide in-app average (**{uc_avg:.2f}/5.0**), confirming heavy 1★ complaint skew."
         )
 
     st.subheader("Key Opportunity Themes (Directional Ranking)")
@@ -139,6 +227,16 @@ def render_overview() -> None:
         ]
     )
     st.dataframe(opp_df, width="stretch", hide_index=True)
+
+    st.subheader("How to Use This Engine")
+    st.markdown(
+        "1. **Overview:** Review evidence scope, sample-vs-platform bias, and ranked opportunity themes.\n"
+        "2. **Opportunity Explorer:** Filter core evidence by source, keyword category, and rating tier to inspect supporting quotes.\n"
+        "3. **Customer Voice:** Search individual PII-scrubbed records, existing LLM tags, and human-review flags.\n"
+        "4. **Bias Analysis:** Inspect rating skew, silent non-returner gaps (`0/184`), and category/city sparsity.\n"
+        "5. **Live AI Tagging:** **Mentors & reviewers** can paste any public review here to test the live **Groq v3.2** 16-field tagger.\n"
+        "6. **Methodology:** Review collection provenance, privacy redaction, and golden-set validation."
+    )
 
 
 def render_opportunity_explorer() -> None:
@@ -350,18 +448,38 @@ def render_live_tagging() -> None:
     else:
         st.success("`GROQ_API_KEY` detected. Ready for live tagging with `tagger_v3_2`.")
 
+    if "live_tag_calls" not in st.session_state:
+        st.session_state["live_tag_calls"] = 0
+    if "live_tag_last_ts" not in st.session_state:
+        st.session_state["live_tag_last_ts"] = 0.0
+
     sample_text = (
         "Booked UC chimney deep clean last month. The cleaning was fine, but 2 weeks later oil "
         "started dripping and warranty was only 10 days. Next time I might just call my local guy."
     )
     with st.form("live_tag_form"):
-        review_text = st.text_area("Review Text", value=sample_text, height=130)
+        review_text = st.text_area(
+            f"Review Text (max {MAX_LIVE_INPUT_CHARS:,} characters; PII is redacted before tagging)",
+            value=sample_text,
+            max_chars=MAX_LIVE_INPUT_CHARS,
+            height=130,
+        )
         c1, c2 = st.columns(2)
         src = c1.selectbox("Source", ["Play Store", "App Store", "Reddit", "Trustpilot", "Other"])
         rat = c2.selectbox("Star Rating (optional)", [None, 1, 2, 3, 4, 5], index=2)
         submitted = st.form_submit_button("Run Groq v3.2 Tagger")
 
     if submitted:
+        now = time.monotonic()
+        if st.session_state["live_tag_calls"] >= 10:
+            st.warning("Session demo limit (10 calls) reached to protect API quota. Reload the page to reset.")
+            return
+        if now - st.session_state["live_tag_last_ts"] < 5.0:
+            st.warning("Please wait at least 5 seconds between live tagging requests.")
+            return
+
+        st.session_state["live_tag_calls"] += 1
+        st.session_state["live_tag_last_ts"] = now
         with st.spinner("Running privacy checks and Groq v3.2 tagger..."):
             resp = tag_live_review_groq_v3_2(
                 text=review_text,

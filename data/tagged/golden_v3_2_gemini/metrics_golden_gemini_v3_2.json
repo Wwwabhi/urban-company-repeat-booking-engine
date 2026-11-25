@@ -1,0 +1,153 @@
+[
+  {
+    "review_id": "bb81193d-cf36-41b3-abce-4d201b3c4a59",
+    "status": "ok",
+    "latency_s": 2.543
+  },
+  {
+    "review_id": "99226311-a2f2-4ecf-b1ed-7d28518cd95e",
+    "status": "ok",
+    "latency_s": 2.275
+  },
+  {
+    "review_id": "75c91a8d-c132-48e2-a420-ea4221bb6059",
+    "status": "ok",
+    "latency_s": 2.358
+  },
+  {
+    "review_id": "36b24dd5-1cd2-4752-9a46-68307d86382c",
+    "status": "ok",
+    "latency_s": 2.287
+  },
+  {
+    "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+    "status": "ok",
+    "latency_s": 2.018
+  },
+  {
+    "review_id": "43582ef1-c85a-4b67-ad13-662ab7a72dcb",
+    "status": "ok",
+    "latency_s": 21.143
+  },
+  {
+    "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+    "status": "ok",
+    "latency_s": 6.117
+  },
+  {
+    "review_id": "bec86ea9-9a8f-495d-a091-1e4ec7843980",
+    "status": "ok",
+    "latency_s": 2.141
+  },
+  {
+    "review_id": "6b579933-e83a-459c-b7c7-73f83b669c16",
+    "status": "ok",
+    "latency_s": 2.548
+  },
+  {
+    "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+    "status": "ok",
+    "latency_s": 2.054
+  },
+  {
+    "review_id": "b04a772a-f857-4356-ae3d-fa83612fdb90",
+    "status": "ok",
+    "latency_s": 6.695
+  },
+  {
+    "review_id": "372c9648-73fe-4245-8121-a8f198701159",
+    "status": "ok",
+    "latency_s": 5.974
+  },
+  {
+    "review_id": "bbf12112-379a-4f54-9112-99d788cb9d2e",
+    "status": "ok",
+    "latency_s": 1.91
+  },
+  {
+    "review_id": "b31f176a-29af-4454-bf5d-4eacf25b7a38",
+    "status": "ok",
+    "latency_s": 16.466
+  },
+  {
+    "review_id": "83ea578e-2a5e-41fc-a0b7-6b542aa3953e",
+    "status": "ok",
+    "latency_s": 4.713
+  },
+  {
+    "review_id": "14815231009",
+    "status": "ok",
+    "latency_s": 5.547
+  },
+  {
+    "review_id": "14805610926",
+    "status": "ok",
+    "latency_s": 2.118
+  },
+  {
+    "review_id": "14809078193",
+    "status": "ok",
+    "latency_s": 1.861
+  },
+  {
+    "review_id": "14816200493",
+    "status": "ok",
+    "latency_s": 5.188
+  },
+  {
+    "review_id": "14811772838",
+    "status": "ok",
+    "latency_s": 1.951
+  },
+  {
+    "review_id": "14813121635",
+    "status": "ok",
+    "latency_s": 5.911
+  },
+  {
+    "review_id": "14800891393",
+    "status": "ok",
+    "latency_s": 2.624
+  },
+  {
+    "review_id": "14819013371",
+    "status": "failed",
+    "latency_s": 21.239,
+    "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  {
+    "review_id": "14787997500",
+    "status": "ok",
+    "latency_s": 2.134
+  },
+  {
+    "review_id": "14784151525",
+    "status": "ok",
+    "latency_s": 6.619
+  },
+  {
+    "review_id": "14811553737",
+    "status": "ok",
+    "latency_s": 1.846
+  },
+  {
+    "review_id": "14792849957",
+    "status": "ok",
+    "latency_s": 21.23
+  },
+  {
+    "review_id": "14793598838",
+    "status": "ok",
+    "latency_s": 2.418
+  },
+  {
+    "review_id": "14807881351",
+    "status": "ok",
+    "latency_s": 2.323
+  },
+  {
+    "review_id": "14812347184",
+    "status": "ok",
+    "latency_s": 1.979
+  }
+]

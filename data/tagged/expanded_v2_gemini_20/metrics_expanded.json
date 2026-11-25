@@ -1,0 +1,161 @@
+[
+  {
+    "review_id": "11735b06-dcf1-48ff-800c-2cdd10a939c7",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 24.264,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "939fd4e6-b663-46e0-bea5-483ccca5a247",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 6.226,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "a1a51fe8-9e7f-4823-a616-83357908ae80",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.95,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "83508219-9056-46e7-b4e7-eebcd087ed4c",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 2.322,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "e0539ca4-abc7-41a7-a1b2-c47b0d0e61b6",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 5.882,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "7c8a957b-988f-45ff-a004-a94ec8e9737a",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 5.932,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "72691238-692e-4b28-a7ed-94ecf421d30d",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.959,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "586b7369-8558-4edb-b589-1f690acf3f05",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 2.519,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "8e62eb73-7d4f-4490-83cb-153b71ab731d",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 2.109,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "d9fff5b9-c1b5-44c1-9af7-c554df734e08",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.989,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "ff35544a-3a91-409a-a105-1bda0272cf0e",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.848,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "cf0dc5ca-e41b-442d-ae75-f942d9a9b4d2",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 6.128,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "464ca416-6e10-48a0-8acb-2f7ce366f21a",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.845,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "aa2a8237-a070-4114-bb85-33f32122fe2b",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.834,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "843bae93-cfec-47ce-8e51-6eb6f9883c52",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 1.904,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "673ddc49-55dd-4d16-baef-5fed15c5d801",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 6.137,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "c454ddcc-c9cc-4246-bc9d-290d28807ba1",
+    "provider": "gemini",
+    "status": "failed",
+    "error_type": "ServerError",
+    "wall_latency_s": 30.052
+  },
+  {
+    "review_id": "5083af42-d962-40de-81a3-7cee294ef053",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 11.573,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "17b90b46-0066-4b7d-81ba-7161e53fa467",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 18.679,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "5ead2b77-e1ca-4fff-a0c2-8dd618764086",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 2.992,
+    "grounded_quote": true,
+    "requires_human_review": true
+  }
+]

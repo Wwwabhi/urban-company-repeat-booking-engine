@@ -1,0 +1,42 @@
+[
+  {
+    "review_id": "4aa218ce-da96-4c39-8819-cbfb7300d742",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 2.489,
+    "grounded_quote": true,
+    "requires_human_review": false
+  },
+  {
+    "review_id": "cb3e62da-a138-49a2-9612-48c17e307d88",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 9.378,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "80fef5a6-de97-4f3f-a026-5bc319da4c91",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 4.89,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "991c9f0f-a4f7-4e51-9739-3c4f5ce92331",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 7.56,
+    "grounded_quote": true,
+    "requires_human_review": true
+  },
+  {
+    "review_id": "dd843f61-f437-45f0-a303-4a38df69b926",
+    "provider": "gemini",
+    "status": "ok",
+    "wall_latency_s": 4.858,
+    "grounded_quote": true,
+    "requires_human_review": true
+  }
+]
