@@ -1,0 +1,21 @@
+{
+  "total_raw_read": 1522,
+  "raw_counts_by_file": {
+    "data/raw/google_play_reviews.jsonl": 100,
+    "data/raw/google_play_reviews_v2.jsonl": 1100,
+    "data/raw/app_store_reviews.jsonl": 100,
+    "data/raw/investor_relations_excerpts.jsonl": 222
+  },
+  "total_normalized_kept": 1522,
+  "kept_by_source": {
+    "Play Store": 1200,
+    "App Store": 100,
+    "Press Release": 7,
+    "Earnings Call": 2,
+    "Shareholder Letter": 213
+  },
+  "removed_counts": {},
+  "instahelp_flagged": 144,
+  "core_eligible": 1378,
+  "output_path": "data/processed/normalized_evidence_v2.jsonl"
+}

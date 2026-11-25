@@ -1,0 +1,126 @@
+[
+  {
+    "review_id": "bb81193d-cf36-41b3-abce-4d201b3c4a59",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.625,
+    "request_id": "chatcmpl-8b885e78-d32c-4b74-887e-4fe91d6d30da",
+    "prompt_tokens": 2388,
+    "completion_tokens": 1000,
+    "total_tokens": 3388
+  },
+  {
+    "review_id": "99226311-a2f2-4ecf-b1ed-7d28518cd95e",
+    "attempt": 1,
+    "status_code": 400,
+    "latency": 2.313,
+    "request_id": "req_01m87nxvw2ef5sp60t5dv97mqr",
+    "error_type": "BadRequestError"
+  },
+  {
+    "review_id": "75c91a8d-c132-48e2-a420-ea4221bb6059",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.698,
+    "request_id": "chatcmpl-0dcb6ea0-caab-43e1-a8b9-d8fbf8745bd8",
+    "prompt_tokens": 2397,
+    "completion_tokens": 1000,
+    "total_tokens": 3397
+  },
+  {
+    "review_id": "36b24dd5-1cd2-4752-9a46-68307d86382c",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.801,
+    "request_id": "chatcmpl-6a97a2a2-9f7a-464b-9a55-dff6a7e77156",
+    "prompt_tokens": 2464,
+    "completion_tokens": 969,
+    "total_tokens": 3433
+  },
+  {
+    "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+    "attempt": 1,
+    "status_code": 400,
+    "latency": 2.335,
+    "request_id": "req_01m87p0cqveg19gmr91e6a5ax6",
+    "error_type": "BadRequestError"
+  },
+  {
+    "review_id": "43582ef1-c85a-4b67-ad13-662ab7a72dcb",
+    "attempt": 1,
+    "status_code": 400,
+    "latency": 2.41,
+    "request_id": "req_01m87p17g4e63spke29731q1gh",
+    "error_type": "BadRequestError"
+  },
+  {
+    "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 3.027,
+    "request_id": "chatcmpl-5b83a62e-ec87-4ee7-a4ac-7a0d6842023b",
+    "prompt_tokens": 2476,
+    "completion_tokens": 1000,
+    "total_tokens": 3476
+  },
+  {
+    "review_id": "bec86ea9-9a8f-495d-a091-1e4ec7843980",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.654,
+    "request_id": "chatcmpl-e9f85ae3-5396-49e2-a158-4b203db3ba7c",
+    "prompt_tokens": 2388,
+    "completion_tokens": 932,
+    "total_tokens": 3320
+  },
+  {
+    "review_id": "6b579933-e83a-459c-b7c7-73f83b669c16",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.528,
+    "request_id": "chatcmpl-329bc8ba-526a-4a24-b978-ba352f48520b",
+    "prompt_tokens": 2401,
+    "completion_tokens": 958,
+    "total_tokens": 3359
+  },
+  {
+    "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.684,
+    "request_id": "chatcmpl-23f7d4e4-7bdd-4a75-89b2-b43122a11795",
+    "prompt_tokens": 2419,
+    "completion_tokens": 1000,
+    "total_tokens": 3419
+  },
+  {
+    "review_id": "99226311-a2f2-4ecf-b1ed-7d28518cd95e",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 3.37,
+    "request_id": "chatcmpl-f1526c16-8f4b-44c5-bb65-86701f89b8f0",
+    "prompt_tokens": 2392,
+    "completion_tokens": 1120,
+    "total_tokens": 3512
+  },
+  {
+    "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 3.24,
+    "request_id": "chatcmpl-f8afa475-3c7f-4051-bb60-022b2d3118f9",
+    "prompt_tokens": 2470,
+    "completion_tokens": 1310,
+    "total_tokens": 3780
+  },
+  {
+    "review_id": "43582ef1-c85a-4b67-ad13-662ab7a72dcb",
+    "attempt": 1,
+    "status_code": 200,
+    "latency": 2.692,
+    "request_id": "chatcmpl-6e1b7642-658a-445c-a335-e24c0b4f832d",
+    "prompt_tokens": 2391,
+    "completion_tokens": 1100,
+    "total_tokens": 3491
+  }
+]

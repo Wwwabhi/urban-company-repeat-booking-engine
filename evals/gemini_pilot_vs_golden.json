@@ -1,0 +1,867 @@
+{
+  "evaluation_metadata": {
+    "model": "gemini-3.5-flash-lite",
+    "pipeline_version": "v2",
+    "evaluation_date": "2026-11-24",
+    "sample_size": 8,
+    "golden_set_total": 30,
+    "pilot_sources": [
+      "data/tagged/pilot/tagged_reviews_pilot.jsonl",
+      "data/tagged/pilot/review_queue_pilot.jsonl",
+      "data/tagged/pilot/retry_experiment/tagged_reviews_retry.jsonl",
+      "data/tagged/pilot/retry_experiment/review_queue_retry.jsonl"
+    ]
+  },
+  "field_metrics": {
+    "category": {
+      "total_evaluated": 8,
+      "matches": 7,
+      "mismatches": 1,
+      "accuracy": 0.875,
+      "per_class": {
+        "deep clean": {
+          "support": 1,
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.667
+        },
+        "other": {
+          "support": 2,
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.667
+        },
+        "salon": {
+          "support": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "unknown": {
+          "support": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "experience_type": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "negative": {
+          "support": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "positive": {
+          "support": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "nothing_went_wrong": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "False": {
+          "support": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "None": {
+          "support": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "rebook_signal": {
+      "total_evaluated": 8,
+      "matches": 4,
+      "mismatches": 4,
+      "accuracy": 0.5,
+      "per_class": {
+        "rebooked": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "unclear": {
+          "support": 7,
+          "tp": 4,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.8,
+          "recall": 0.571,
+          "f1": 0.667
+        },
+        "will_not_rebook": {
+          "support": 0,
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "need_trigger": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "None": {
+          "support": 8,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "recall_gap": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "None": {
+          "support": 8,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "alternative_used": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "unclear": {
+          "support": 8,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "post_service_expectation": {
+      "total_evaluated": 8,
+      "matches": 8,
+      "mismatches": 0,
+      "accuracy": 1.0,
+      "per_class": {
+        "unclear": {
+          "support": 8,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "unmet_need": {
+      "total_evaluated": 8,
+      "matches": 3,
+      "mismatches": 5,
+      "accuracy": 0.375,
+      "per_class": {
+        "None": {
+          "support": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "full promised service duration": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "full standard service duration as promised": {
+          "support": 0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "professional behavior and proper service guidelines from technicians": {
+          "support": 0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "proper chimney reinstallation without post-service leaks and reasonable warranty coverage": {
+          "support": 0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "protection against partner cancellations": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "reliable app booking tracking": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "reliable post-service installation": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "reliable technician arrival without cancellations and responsive customer service": {
+          "support": 0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "responsive customer care and punctual technician arrival": {
+          "support": 1,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "stable app functionality to view ongoing booking status and details": {
+          "support": 0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  },
+  "mismatches": [
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "field": "category",
+      "human_label": "other",
+      "gemini_label": "deep clean",
+      "error_category": "Taxonomy boundary ambiguity (Appliance chimney vs general deep clean)",
+      "explanation": "Model matched explicit text phrase \"Chimney deep clean service\" to deep clean, whereas human annotated as other under appliance classification guidelines."
+    },
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "field": "rebook_signal",
+      "human_label": "unclear",
+      "gemini_label": "will_not_rebook",
+      "error_category": "Dissatisfaction-to-churn over-inference",
+      "explanation": "Model inferred will_not_rebook from strong negative sentiment / 1-star / cancellation without an explicit statement of future non-rebooking intent."
+    },
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "field": "unmet_need",
+      "human_label": "reliable post-service installation",
+      "gemini_label": "proper chimney reinstallation without post-service leaks and reasonable warranty coverage",
+      "error_category": "Free-text phrasing divergence (semantic alignment maintained)",
+      "explanation": "Human labeled \"reliable post-service installation\" while Gemini synthesized \"proper chimney reinstallation without post-service leaks and reasonable warranty coverage\". Both capture the same underlying operational friction."
+    },
+    {
+      "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+      "field": "rebook_signal",
+      "human_label": "unclear",
+      "gemini_label": "will_not_rebook",
+      "error_category": "Dissatisfaction-to-churn over-inference",
+      "explanation": "Model inferred will_not_rebook from strong negative sentiment / 1-star / cancellation without an explicit statement of future non-rebooking intent."
+    },
+    {
+      "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+      "field": "unmet_need",
+      "human_label": "responsive customer care and punctual technician arrival",
+      "gemini_label": "professional behavior and proper service guidelines from technicians",
+      "error_category": "Free-text phrasing divergence (semantic alignment maintained)",
+      "explanation": "Human labeled \"responsive customer care and punctual technician arrival\" while Gemini synthesized \"professional behavior and proper service guidelines from technicians\". Both capture the same underlying operational friction."
+    },
+    {
+      "review_id": "bb81193d-cf36-41b3-abce-4d201b3c4a59",
+      "field": "rebook_signal",
+      "human_label": "rebooked",
+      "gemini_label": "unclear",
+      "error_category": "Historical satisfaction conservative under-inference",
+      "explanation": "Model conservatively classified \"The last one was the best\" as unclear rebook_signal with low confidence, routing to review queue, while human inferred rebooked."
+    },
+    {
+      "review_id": "bec86ea9-9a8f-495d-a091-1e4ec7843980",
+      "field": "unmet_need",
+      "human_label": "full promised service duration",
+      "gemini_label": "full standard service duration as promised",
+      "error_category": "Free-text phrasing divergence (semantic alignment maintained)",
+      "explanation": "Human labeled \"full promised service duration\" while Gemini synthesized \"full standard service duration as promised\". Both capture the same underlying operational friction."
+    },
+    {
+      "review_id": "6b579933-e83a-459c-b7c7-73f83b669c16",
+      "field": "unmet_need",
+      "human_label": "reliable app booking tracking",
+      "gemini_label": "stable app functionality to view ongoing booking status and details",
+      "error_category": "Free-text phrasing divergence (semantic alignment maintained)",
+      "explanation": "Human labeled \"reliable app booking tracking\" while Gemini synthesized \"stable app functionality to view ongoing booking status and details\". Both capture the same underlying operational friction."
+    },
+    {
+      "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+      "field": "rebook_signal",
+      "human_label": "unclear",
+      "gemini_label": "will_not_rebook",
+      "error_category": "Dissatisfaction-to-churn over-inference",
+      "explanation": "Model inferred will_not_rebook from strong negative sentiment / 1-star / cancellation without an explicit statement of future non-rebooking intent."
+    },
+    {
+      "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+      "field": "unmet_need",
+      "human_label": "protection against partner cancellations",
+      "gemini_label": "reliable technician arrival without cancellations and responsive customer service",
+      "error_category": "Free-text phrasing divergence (semantic alignment maintained)",
+      "explanation": "Human labeled \"protection against partner cancellations\" while Gemini synthesized \"reliable technician arrival without cancellations and responsive customer service\". Both capture the same underlying operational friction."
+    }
+  ],
+  "per_review_evaluations": [
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "origin": "pilot_tagged",
+      "rating": 1,
+      "review_text": "Recently I have availed Chimney deep clean service from UC on Nov 2nd. After 15 days of use, oil started dripping from outside indicating some leakage while reinstallation of chimney after service. The chimney was working perfectly fine for the last few years and just after the service the installation appears to be inappropriate. Now I cannot claim warranty as it was just valid for 10 days. I'm extremely unhappy as I already paid almost Rs 1400 and expected to book another paid service.",
+      "annotator_notes": "Chimney classified as other; warranty complaint is not automatically a warranty-clarity expectation.",
+      "model_evidence_quote": "I'm extremely unhappy as I already paid almost Rs 1400 and expected to book another paid service.",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "other",
+          "gemini": "deep clean",
+          "match": false
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini": "negative",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini": false,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "will_not_rebook",
+          "match": false
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": "reliable post-service installation",
+          "gemini": "proper chimney reinstallation without post-service leaks and reasonable warranty coverage",
+          "match": false
+        }
+      }
+    },
+    {
+      "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+      "origin": "pilot_tagged",
+      "rating": 1,
+      "review_text": "‼️Third class customer care support. They don't provide any RO technician if any problem occurs. ‼️Low class servicing team. The service man was very rude and lame. He didn't tell me how to use it, any guidelines & any precautions. The booked time was 10 am. But he arrived at 2.30pm. And showed us attitude. And the features of this app are really disgusting. It needs to be improved. ‼️Third class app service. I wanna give -5 star review.",
+      "annotator_notes": "RO purifier classified as other; multiple operational failures (delay, rude staff, lack of guidelines).",
+      "model_evidence_quote": "I wanna give -5 star review.",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "other",
+          "gemini": "other",
+          "match": true
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini": "negative",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini": false,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "will_not_rebook",
+          "match": false
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": "responsive customer care and punctual technician arrival",
+          "gemini": "professional behavior and proper service guidelines from technicians",
+          "match": false
+        }
+      }
+    },
+    {
+      "review_id": "bb81193d-cf36-41b3-abce-4d201b3c4a59",
+      "origin": "pilot_queue",
+      "rating": 5,
+      "review_text": "its worth it for our salon experience . The last one was the best. Thank you UC",
+      "annotator_notes": "Repeat usage inferred from explicit phrase \"The last one\".",
+      "model_evidence_quote": "its worth it for our salon experience . The last one was the best.",
+      "requires_human_review": true,
+      "review_reasons": [
+        "low_confidence: Model reported low tagging confidence"
+      ],
+      "field_results": {
+        "category": {
+          "human": "salon",
+          "gemini": "salon",
+          "match": true
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini": "positive",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "rebooked",
+          "gemini": "unclear",
+          "match": false
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        }
+      }
+    },
+    {
+      "review_id": "99226311-a2f2-4ecf-b1ed-7d28518cd95e",
+      "origin": "retry_tagged",
+      "rating": 5,
+      "review_text": "Very good kitchen cleaning done by [NAME_REDACTED]. Very polite, explains well and does a clean job.",
+      "annotator_notes": "Kitchen cleaning mapped to deep clean.",
+      "model_evidence_quote": "Very good kitchen cleaning done",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "deep clean",
+          "gemini": "deep clean",
+          "match": true
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini": "positive",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        }
+      }
+    },
+    {
+      "review_id": "bec86ea9-9a8f-495d-a091-1e4ec7843980",
+      "origin": "retry_tagged",
+      "rating": 3,
+      "review_text": "At UC instead of 1 hr standard service, you provide only 45 minutes. underrated thus.",
+      "annotator_notes": "3-star rating overridden to negative experience_type due to explicit shortfall in service delivery duration.",
+      "model_evidence_quote": "At UC instead of 1 hr standard service, you provide only 45 minutes.",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "unknown",
+          "gemini": "unknown",
+          "match": true
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini": "negative",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini": false,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": "full promised service duration",
+          "gemini": "full standard service duration as promised",
+          "match": false
+        }
+      }
+    },
+    {
+      "review_id": "6b579933-e83a-459c-b7c7-73f83b669c16",
+      "origin": "retry_tagged",
+      "rating": 2,
+      "review_text": "For the last few months, the app has not been very responding. Suddenly it stops working and one can't see the status or details of their current or ongoing booking.",
+      "annotator_notes": "Technical failure during active booking; classified as negative despite 2-star score.",
+      "model_evidence_quote": "Suddenly it stops working and one can't see the status or details of their current or ongoing booking.",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "unknown",
+          "gemini": "unknown",
+          "match": true
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini": "negative",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini": false,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": "reliable app booking tracking",
+          "gemini": "stable app functionality to view ongoing booking status and details",
+          "match": false
+        }
+      }
+    },
+    {
+      "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+      "origin": "retry_tagged",
+      "rating": 1,
+      "review_text": "I had been a regular customer of urban company but due to one person [NAME_REDACTED] I am giving this pap 1 star as he cancelled booking exact half hour before the scheduled time without explaining the reason and customer service seems to be hopeless",
+      "annotator_notes": "Past tenure as regular customer overridden to unclear rebook_signal due to cancellation and churn context.",
+      "model_evidence_quote": "he cancelled booking exact half hour before the scheduled time without explaining the reason and customer service seems to be hopeless",
+      "requires_human_review": false,
+      "review_reasons": [],
+      "field_results": {
+        "category": {
+          "human": "unknown",
+          "gemini": "unknown",
+          "match": true
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini": "negative",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini": false,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "will_not_rebook",
+          "match": false
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": "protection against partner cancellations",
+          "gemini": "reliable technician arrival without cancellations and responsive customer service",
+          "match": false
+        }
+      }
+    },
+    {
+      "review_id": "75c91a8d-c132-48e2-a420-ea4221bb6059",
+      "origin": "retry_queue",
+      "rating": 5,
+      "review_text": "Great experience at Urban Company! Professional, well-mannered and skilled staff. Excellent service, well-organised and very hygienic. Highly recommended!",
+      "annotator_notes": "General service review, no specific category.",
+      "model_evidence_quote": "Great experience at Urban Company! Professional, well-mannered and skilled staff. Excellent service, well-organised and very hygienic. Highly recommended!",
+      "requires_human_review": true,
+      "review_reasons": [
+        "low_confidence: Model reported low tagging confidence"
+      ],
+      "field_results": {
+        "category": {
+          "human": "unknown",
+          "gemini": "unknown",
+          "match": true
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini": "positive",
+          "match": true
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini": "unclear",
+          "match": true
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini": null,
+          "match": true
+        }
+      }
+    }
+  ]
+}

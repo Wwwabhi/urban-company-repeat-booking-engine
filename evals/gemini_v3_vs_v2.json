@@ -1,0 +1,781 @@
+{
+  "evaluation_metadata": {
+    "evaluation_name": "Gemini v3 vs Gemini v2 Golden Set Comparison",
+    "timestamp": "2026-11-24T22:05:36.915666",
+    "model": "gemini-3.5-flash-lite",
+    "sample_size": 8,
+    "golden_set_size": 30,
+    "v3_prompt_path": "engine/prompts/tagger_v3.md",
+    "v2_prompt_path": "engine/prompts/tagger_v2.md"
+  },
+  "pipeline_execution_metrics": {
+    "total_evaluated": 8,
+    "v3_tagged_count": 7,
+    "v3_queue_count": 1,
+    "v3_api_failures": 0,
+    "initial_api_errors_recovered_via_retry": 1
+  },
+  "summary_metrics": {
+    "total_field_evaluations": 72,
+    "corrected_mismatches_count": 4,
+    "newly_introduced_mismatches_count": 0,
+    "net_improvement_percentage": 5.555555555555555
+  },
+  "rebook_signal_confusion_matrix": {
+    "v2": {
+      "rebooked -> unclear": 1,
+      "unclear -> unclear": 4,
+      "unclear -> will_not_rebook": 3
+    },
+    "v3": {
+      "rebooked -> unclear": 1,
+      "unclear -> unclear": 7
+    }
+  },
+  "field_metrics": {
+    "category": {
+      "v2_correct": 7,
+      "v2_accuracy": 0.875,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.125
+    },
+    "experience_type": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "nothing_went_wrong": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "rebook_signal": {
+      "v2_correct": 4,
+      "v2_accuracy": 0.5,
+      "v3_correct": 7,
+      "v3_accuracy": 0.875,
+      "delta": 0.375
+    },
+    "need_trigger": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "recall_gap": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "alternative_used": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "post_service_expectation": {
+      "v2_correct": 8,
+      "v2_accuracy": 1.0,
+      "v3_correct": 8,
+      "v3_accuracy": 1.0,
+      "delta": 0.0
+    },
+    "unmet_need": {
+      "v2_correct": 3,
+      "v2_accuracy": 0.375,
+      "v3_correct": 3,
+      "v3_accuracy": 0.375,
+      "delta": 0.0
+    }
+  },
+  "corrected_mismatches": [
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "field": "category",
+      "v2": "deep clean",
+      "v3": "other",
+      "human": "other"
+    },
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "field": "rebook_signal",
+      "v2": "will_not_rebook",
+      "v3": "unclear",
+      "human": "unclear"
+    },
+    {
+      "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+      "field": "rebook_signal",
+      "v2": "will_not_rebook",
+      "v3": "unclear",
+      "human": "unclear"
+    },
+    {
+      "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+      "field": "rebook_signal",
+      "v2": "will_not_rebook",
+      "v3": "unclear",
+      "human": "unclear"
+    }
+  ],
+  "newly_introduced_mismatches": [],
+  "per_review_comparisons": [
+    {
+      "review_id": "bb81193d-cf36-41b3-abce-4d201b3c4a59",
+      "rating": 5,
+      "text": "its worth it for our salon experience . The last one was the best. Thank you UC",
+      "annotator_notes": "Repeat usage inferred from explicit phrase \"The last one\".",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "salon",
+          "gemini_v2": "salon",
+          "gemini_v3": "salon",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini_v2": "positive",
+          "gemini_v3": "positive",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "rebooked",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        }
+      }
+    },
+    {
+      "review_id": "99226311-a2f2-4ecf-b1ed-7d28518cd95e",
+      "rating": 5,
+      "text": "Very good kitchen cleaning done by [NAME_REDACTED]. Very polite, explains well and does a clean job.",
+      "annotator_notes": "Kitchen cleaning mapped to deep clean.",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "deep clean",
+          "gemini_v2": "deep clean",
+          "gemini_v3": "deep clean",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini_v2": "positive",
+          "gemini_v3": "positive",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        }
+      }
+    },
+    {
+      "review_id": "4e4e2ef9-6dd6-40cc-a65b-a3f327daf7f0",
+      "rating": 1,
+      "text": "Recently I have availed Chimney deep clean service from UC on Nov 2nd. After 15 days of use, oil started dripping from outside indicating some leakage while reinstallation of chimney after service. The chimney was working perfectly fine for the last few years and just after the service the installation appears to be inappropriate. Now I cannot claim warranty as it was just valid for 10 days. I'm extremely unhappy as I already paid almost Rs 1400 and expected to book another paid service.",
+      "annotator_notes": "Chimney classified as other; warranty complaint is not automatically a warranty-clarity expectation.",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "other",
+          "gemini_v2": "deep clean",
+          "gemini_v3": "other",
+          "v2_match": false,
+          "v3_match": true,
+          "status": "corrected_in_v3"
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini_v2": "negative",
+          "gemini_v3": "negative",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini_v2": false,
+          "gemini_v3": false,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "will_not_rebook",
+          "gemini_v3": "unclear",
+          "v2_match": false,
+          "v3_match": true,
+          "status": "corrected_in_v3"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": "reliable post-service installation",
+          "gemini_v2": "proper chimney reinstallation without post-service leaks and reasonable warranty coverage",
+          "gemini_v3": "longer warranty coverage and proper reinstallation of appliances",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        }
+      }
+    },
+    {
+      "review_id": "1876c25b-b9ea-4720-9fcd-d11a7caa4bf1",
+      "rating": 1,
+      "text": "\u203c\ufe0fThird class customer care support. They don't provide any RO technician if any problem occurs. \u203c\ufe0fLow class servicing team. The service man was very rude and lame. He didn't tell me how to use it, any guidelines & any precautions. The booked time was 10 am. But he arrived at 2.30pm. And showed us attitude. And the features of this app are really disgusting. It needs to be improved. \u203c\ufe0fThird class app service. I wanna give -5 star review.",
+      "annotator_notes": "RO purifier classified as other; multiple operational failures (delay, rude staff, lack of guidelines).",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "other",
+          "gemini_v2": "other",
+          "gemini_v3": "other",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini_v2": "negative",
+          "gemini_v3": "negative",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini_v2": false,
+          "gemini_v3": false,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "will_not_rebook",
+          "gemini_v3": "unclear",
+          "v2_match": false,
+          "v3_match": true,
+          "status": "corrected_in_v3"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": "responsive customer care and punctual technician arrival",
+          "gemini_v2": "professional behavior and proper service guidelines from technicians",
+          "gemini_v3": "polite technicians who arrive on time and provide usage guidelines",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        }
+      }
+    },
+    {
+      "review_id": "bec86ea9-9a8f-495d-a091-1e4ec7843980",
+      "rating": 3,
+      "text": "At UC instead of 1 hr standard service, you provide only 45 minutes. underrated thus.",
+      "annotator_notes": "3-star rating overridden to negative experience_type due to explicit shortfall in service delivery duration.",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "unknown",
+          "gemini_v2": "unknown",
+          "gemini_v3": "unknown",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini_v2": "negative",
+          "gemini_v3": "negative",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini_v2": false,
+          "gemini_v3": false,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": "full promised service duration",
+          "gemini_v2": "full standard service duration as promised",
+          "gemini_v3": "full standard service duration fulfillment",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        }
+      }
+    },
+    {
+      "review_id": "6b579933-e83a-459c-b7c7-73f83b669c16",
+      "rating": 2,
+      "text": "For the last few months, the app has not been very responding. Suddenly it stops working and one can't see the status or details of their current or ongoing booking.",
+      "annotator_notes": "Technical failure during active booking; classified as negative despite 2-star score.",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "unknown",
+          "gemini_v2": "unknown",
+          "gemini_v3": "unknown",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini_v2": "negative",
+          "gemini_v3": "negative",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini_v2": false,
+          "gemini_v3": false,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": "reliable app booking tracking",
+          "gemini_v2": "stable app functionality to view ongoing booking status and details",
+          "gemini_v3": "reliable app performance to track ongoing bookings",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        }
+      }
+    },
+    {
+      "review_id": "06b45346-6f25-4d49-9b01-13d980482c2c",
+      "rating": 1,
+      "text": "I had been a regular customer of urban company but due to one person [NAME_REDACTED] I am giving this pap 1 star as he cancelled booking exact half hour before the scheduled time without explaining the reason and customer service seems to be hopeless",
+      "annotator_notes": "Past tenure as regular customer overridden to unclear rebook_signal due to cancellation and churn context.",
+      "v3_destination": "tagged",
+      "field_comparisons": {
+        "category": {
+          "human": "unknown",
+          "gemini_v2": "unknown",
+          "gemini_v3": "unknown",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "negative",
+          "gemini_v2": "negative",
+          "gemini_v3": "negative",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": false,
+          "gemini_v2": false,
+          "gemini_v3": false,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "will_not_rebook",
+          "gemini_v3": "unclear",
+          "v2_match": false,
+          "v3_match": true,
+          "status": "corrected_in_v3"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": "protection against partner cancellations",
+          "gemini_v2": "reliable technician arrival without cancellations and responsive customer service",
+          "gemini_v3": "reliable technician arrival without last-minute cancellations",
+          "v2_match": false,
+          "v3_match": false,
+          "status": "mismatch_both"
+        }
+      }
+    },
+    {
+      "review_id": "75c91a8d-c132-48e2-a420-ea4221bb6059",
+      "rating": 5,
+      "text": "Great experience at Urban Company! Professional, well-mannered and skilled staff. Excellent service, well-organised and very hygienic. Highly recommended!",
+      "annotator_notes": "General service review, no specific category.",
+      "v3_destination": "review_queue",
+      "field_comparisons": {
+        "category": {
+          "human": "unknown",
+          "gemini_v2": "unknown",
+          "gemini_v3": "unknown",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "experience_type": {
+          "human": "positive",
+          "gemini_v2": "positive",
+          "gemini_v3": "positive",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "nothing_went_wrong": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "rebook_signal": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "need_trigger": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "recall_gap": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "alternative_used": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "post_service_expectation": {
+          "human": "unclear",
+          "gemini_v2": "unclear",
+          "gemini_v3": "unclear",
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        },
+        "unmet_need": {
+          "human": null,
+          "gemini_v2": null,
+          "gemini_v3": null,
+          "v2_match": true,
+          "v3_match": true,
+          "status": "match_both"
+        }
+      }
+    }
+  ]
+}
