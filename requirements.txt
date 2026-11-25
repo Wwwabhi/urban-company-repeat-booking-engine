@@ -2,5 +2,8 @@ google-play-scraper==1.2.7
 google-genai>=3.5.0
 groq>=1.7.0
 pypdf>=7.0.0
+streamlit>=1.38.0
+pandas>=2.2.0
+requests>=2.31.0
 
 

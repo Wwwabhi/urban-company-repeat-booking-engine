@@ -4,6 +4,8 @@
 !.env.example
 *.pem
 *.key
+.streamlit/secrets.toml
+engine-app/.streamlit/secrets.toml
 
 # Python virtual environments & caches
 .venv/
